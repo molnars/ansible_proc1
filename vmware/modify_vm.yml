@@ -18,6 +18,6 @@
         hardware:
           memory_mb: "{{ new_memory }}"
           num_cpus:  "{{ new_cpu }}"
-        network:
+        networks:
         - name: "{{ new_vm_network }}"
     
