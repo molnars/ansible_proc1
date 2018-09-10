@@ -13,7 +13,7 @@
   tasks:
     - name: modify VM
       vmware_guest:
-        state: reconfigured
+        state: poweredoff
         name: "{{ vm_name }}"
         hardware:
           memory_mb: "{{ new_memory }}"
