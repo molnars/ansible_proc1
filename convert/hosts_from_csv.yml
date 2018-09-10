@@ -5,6 +5,7 @@
   become: false
   vars:
     csvfile: "{{ lookup('file', '../server_vmparams.csv') }}"
+    csvpgfile: "{{ lookup('file', '../vlan_pgparams.csv') }}"
   tasks:
     - name: Parse CSV To YAML
       template:
