@@ -4,9 +4,11 @@ hostipmacs:
 {%   if loop.index != 1 %}
 {%     set list = item.split(",") %}
   - host: '{{ list[0]|trim() }}'
-    inventory_name: '{{ list[1]|trim() }}'
-    ip: '{{ list[2]|trim() }}'
-    vlan: '{{ list[3]|trim() }}'
-    mac: '{{ list[4]|trim() }}'
+    cpu: '{{ list[1]|trim() }}'
+    memory: '{{ list[2]|trim() }}'
+    ip: '{{ list[3]|trim() }}'
+    netmask: '{{ list[4]|trim() }}'
+    gw: '{{ list[5]|trim() }}'
+    networkname: '{{ list[6]|trim() }}'
 {%   endif %}
 {% endfor %}
