@@ -1,0 +1,18 @@
+- name: create PG in DVS
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Create Management portgroup
+      local_action:
+        module: vmware_dvs_portgroup
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        portgroup_name: "{{ DVS_PG_name }}"
+        switch_name: dvSwitch
+        vlan_id: {{ DVS_PG_vlanid }}
+        num_ports: 10
+        portgroup_type: earlyBinding
+        state: present
