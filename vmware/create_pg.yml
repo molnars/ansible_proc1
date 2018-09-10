@@ -3,6 +3,9 @@
   connection: local
   gather_facts: false
   become: false
+  vars:
+    DVS_PG_name: 1009_VLAN_temp
+    DVS_PG_vlanid: 1009
   tasks:
     - name: Create Management portgroup
       local_action:
