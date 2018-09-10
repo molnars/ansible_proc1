@@ -8,6 +8,7 @@
     vcenter_template: Linux_temp
     vm_name: testvm00
     vm_network: "VM Network"
+    vm_ip: "1.1.1.1"
   tasks:
     - name: create VM
       vmware_guest:
