@@ -31,4 +31,4 @@
         num_ports: 10
         portgroup_type: earlyBinding
         state: present
-      loop: "{{ vlan_pgs }}"
+      loop: "{{ vlan_pgs.vlanpgs }}"
