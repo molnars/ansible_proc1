@@ -12,6 +12,17 @@
     vm_netmask: "255.255.255.0"
     vm_gw: "1.1.1.1"
   tasks:
+    - name: check file
+      stat: 
+        path: iterate_hosts.yml
+      register: stat_result
+
+    - name: load CSV To YAML
+      include_vars:
+        file: iterate_hosts.yml
+        name: hostips
+      when: stat_result.stat.exists == true 
+      
     - name: create VM
       vmware_guest:
         hostname: "{{ vcenter_ip }}"
@@ -21,7 +32,7 @@
         cluster: "{{ vcenter_cluster }}"
         datacenter: "{{ vcenter_dc }}"
         folder: /cf
-        name: "{{ vm_name }}"
+        name: "{{ item.host }}"
         state: poweredon
         template: "{{ vcenter_template }}"
         disk:
@@ -34,8 +45,9 @@
         networks:
         - name: "{{ vm_network }}" 
           type: "static"
-          ip: "{{ vm_ip }}"
+          ip: "{{ item.ip }}"
           netmask: "{{ vm_netmask }}"
           gateway: "{{ vm_gw }}"
         wait_for_ip_address: no
+      loop: "{{ hostips.hostipmacs }}"
  
