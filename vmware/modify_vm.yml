@@ -22,6 +22,17 @@
         state: "poweredoff"
         name: "{{ vm_name }}"
       
+    - name: check file
+      stat: 
+        path: ../iterate_hosts.yml
+      register: stat_result
+
+    - name: load CSV To YAML
+      include_vars:
+        file: ../iterate_hosts.yml
+        name: hostips
+      when: stat_result.stat.exists == true 
+      
     - name: modify VM
       vmware_guest:
         hostname: "{{ vcenter_ip }}"
@@ -31,10 +42,11 @@
         cluster: "{{ vcenter_cluster }}"
         validate_certs: false
         state: "present"
-        name: "{{ vm_name }}"
+        name: "{{ item.host }}"
         hardware:
-          memory_mb: "{{ new_memory }}"
-          num_cpus:  "{{ new_cpu }}"
+          memory_mb: "{{ item.memory }}"
+          num_cpus:  "{{ item.cpu }}"
         networks:
-        - name: "{{ DVS_PG_name }}"
+        - name: "{{ item.networkname }}"
+      loop: "{{ hostips.hostipmacs }}"
     
