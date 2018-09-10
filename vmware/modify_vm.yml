@@ -11,6 +11,17 @@
     vcenter_dc: MCIT_DC
     folder: /cf
   tasks:
+    - name: stop VM
+      vmware_guest: 
+        hostname: "{{ vcenter_ip }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ vcenter_dc }}"
+        cluster: "{{ vcenter_cluster }}"
+        validate_certs: false
+        state: "poweredoff"
+        name: "{{ vm_name }}"
+      
     - name: modify VM
       vmware_guest:
         hostname: "{{ vcenter_ip }}"
@@ -19,7 +30,7 @@
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
         validate_certs: false
-        state: poweredoff
+        state: "present"
         name: "{{ vm_name }}"
         hardware:
           memory_mb: "{{ new_memory }}"
