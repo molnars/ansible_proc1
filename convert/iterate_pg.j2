@@ -1,0 +1,9 @@
+---
+hostipmacs:
+{% for item in csvfile.split("\n") %}
+{%   if loop.index != 1 %}
+{%     set list = item.split(",") %}
+  - vlan_name: '{{ list[0]|trim() }}'
+    vlan_id: '{{ list[1]|trim() }}'
+{%   endif %}
+{% endfor %}
