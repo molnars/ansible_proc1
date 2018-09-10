@@ -10,6 +10,7 @@
         hostname: "{{ vcenter_ip }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
+        validate_certs: False
         portgroup_name: "{{ DVS_PG_name }}"
         switch_name: "vDC_NEW"
         vlan_id: "{ DVS_PG_vlanid }}"
