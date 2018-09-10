@@ -1,0 +1,12 @@
+- name: deploy a VM form template
+- vsphere_guest:
+    vCenter_hostname: "{{ vcenter_name }}"
+    username: {{ vcenter_username }}
+    password: "{{ vcenter_password }}"
+    guest: {{ VM_hostname }}
+    from_template: yes
+    template_src: {{ from_template }}
+    cluster: {{ vCenter_cluster }}
+    resource_pool: "/Resources"
+    vm_extra_config:
+      folder: MyFolder
