@@ -1,0 +1,20 @@
+- name: modify existing VM
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  become: false
+  vars:
+    vcenter_ip: vcsa.mcit.local
+    vcenter_username: cfadmin@vsphere.local
+    vcenter_password: Redhat@123
+    vcenter_cluster: MCIT_DC
+    folder: /cf
+  tasks:
+    - name: modify VM
+      state: reconfigured
+      hardware:
+        memory_mb: {{ new_memory }}
+        num_cpus:  {{ new_cpu }}
+      network:
+      - name: {{ new_vm_network }}
+    
