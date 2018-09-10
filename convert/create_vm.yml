@@ -1,5 +1,4 @@
-- name: Create a virtual machine from a template
-  hosts: localhost
+- hosts: localhost
   gather_facts: false
   connection: local
   tasks:
