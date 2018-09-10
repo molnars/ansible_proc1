@@ -3,6 +3,11 @@
   connection: local
   gather_facts: false
   become: false
+  vars:
+    vcenter_datastore: MCIT_DS_17
+    vcenter_template: Linux_temp
+    vm_name: testvm00
+    vm_network: "VM Network"
   tasks:
     - name: create VM
       vmware_guest:
