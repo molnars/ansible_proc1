@@ -24,7 +24,7 @@
         template: Linux_temp
         folder: /cf
         disk:
-        - size_gb: 10
+        - size_gb: 55
           type: thin
           datastore: "{{ vcenter_datastore }}"
         hardware:
