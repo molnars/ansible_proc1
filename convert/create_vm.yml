@@ -1,6 +1,8 @@
-- hosts: localhost
-  gather_facts: false
+- name: convert hosts from csv
+  hosts: localhost
   connection: local
+  gather_facts: false
+  become: false
   tasks:
     name: create VM
     vmware_guest:
@@ -9,24 +11,18 @@
     password: "{{ vcenter_password }}"
     validate_certs: False
     cluster: "{{ vcenter_cluster }}"
-    folder: /testvms
-    name: testvm_2
+    folder: /cf
+    name: "{{ vm_name }}"
     state: poweredon
-    template: Linux_temp
+    template: "{{ vcenter_template }}"
     disk:
-    - size_gb: 10
+    - size_gb: 55
       type: thin
       datastore: "{{ vcenter_datastore }}"
     hardware:
       memory_mb: 512
       num_cpus: 1
-      num_cpu_cores_per_socket: 1
-      hotadd_cpu: True
-      hotremove_cpu: True
-      hotadd_memory: False
-      version: 12 # Hardware version of virtual machine
     networks:
-    - name: VM Network
-      mac: aa:bb:dd:aa:00:14
+    - name: "{{ vm_network }}" 
     wait_for_ip_address: no
   
