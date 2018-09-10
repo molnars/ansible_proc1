@@ -11,27 +11,3 @@
         src: "./iterate_csv.j2"
         dest: "./iterate_hosts.yml"
       run_once: true
-    - name: create VM
-      vmware_guest:
-        hostname: "{{ vcenter_ip }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
-        validate_certs: False
-        cluster: "{{ vcenter_cluster }}"
-        datacenter: "{{ vcenter_dc }}"
-        name: testvm_2
-        state: poweredon
-        template: Linux_temp
-        folder: /cf
-        disk:
-        - size_gb: 55
-          type: thin
-          datastore: "{{ vcenter_datastore }}"
-        hardware:
-          memory_mb: 512
-          num_cpus: 1
-          num_cpu_cores_per_socket: 1
-        networks:
-        - name: VM Network
-          mac: aa:bb:dd:aa:00:14
-        wait_for_ip_address: no
