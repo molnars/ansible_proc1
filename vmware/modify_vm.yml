@@ -34,7 +34,7 @@
         name: "{{ vm_name }}"
         hardware:
           memory_mb: "{{ new_memory }}"
-          num_cpus:  2
+          num_cpus:  "{{ new_cpu }}"
         networks:
-        - name: "{{ new_vm_network }}"
+        - name: "{{ DVS_PG_name }}"
     
