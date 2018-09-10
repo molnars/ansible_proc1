@@ -1,0 +1,14 @@
+- name: send email
+  hosts: localhost
+  become: false
+  tasks:
+    - name: send notification
+      mail:
+        host: smtp.gmail.com
+        port: 587
+        username: "{{ email_from }}"
+        password: "{{ email_sender }}"
+        to: "{{ email_rcpt }}"
+        bcc: "{{ email_bcc }}"
+        subject: notification report
+        body: "System {{ ansible_hostname }} generated lists {{ VM_count }} to be created"
