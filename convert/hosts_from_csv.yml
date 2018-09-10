@@ -22,6 +22,7 @@
         name: testvm_2
         state: poweredon
         template: Linux_temp
+        folder: /
         disk:
         - size_gb: 10
           type: thin
