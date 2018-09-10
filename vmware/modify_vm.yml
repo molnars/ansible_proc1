@@ -13,6 +13,7 @@
   tasks:
     - name: modify VM
       state: reconfigured
+      name: "{{ vm_name }}"
       hardware:
         memory_mb: {{ new_memory }}
         num_cpus:  {{ new_cpu }}
