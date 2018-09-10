@@ -7,7 +7,7 @@
     - name: Create Management portgroup
       local_action:
         module: vmware_dvs_portgroup
-        hostname: "{{ vcenter_hostname }}"
+        hostname: "{{ vcenter_ip }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         portgroup_name: "{{ DVS_PG_name }}"
