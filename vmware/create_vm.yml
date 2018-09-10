@@ -14,12 +14,12 @@
   tasks:
     - name: check file
       stat: 
-        path: ../convert/iterate_hosts.yml
+        path: ../iterate_hosts.yml
       register: stat_result
 
     - name: load CSV To YAML
       include_vars:
-        file: ../convert/iterate_hosts.yml
+        file: ../iterate_hosts.yml
         name: hostips
       when: stat_result.stat.exists == true 
       
@@ -46,8 +46,8 @@
         - name: "{{ vm_network }}" 
           type: "static"
           ip: "{{ item.ip }}"
-          netmask: "{{ vm_netmask }}"
-          gateway: "{{ vm_gw }}"
+          netmask: "{{ item.netmask }}"
+          gateway: "{{ item.gw }}"
         wait_for_ip_address: no
       loop: "{{ hostips.hostipmacs }}"
  
