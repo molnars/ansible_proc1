@@ -11,18 +11,6 @@
     vcenter_dc: MCIT_DC
     folder: /cf
   tasks:
-    - name: stop VM
-      vmware_guest: 
-        hostname: "{{ vcenter_ip }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
-        datacenter: "{{ vcenter_dc }}"
-        cluster: "{{ vcenter_cluster }}"
-        folder: "{{ folder }}"
-        validate_certs: false
-        state: "poweredoff"
-        name: "{{ vm_name }}"
-      
     - name: check file
       stat: 
         path: ../iterate_hosts.yml
@@ -33,6 +21,19 @@
         file: ../iterate_hosts.yml
         name: hostips
       when: stat_result.stat.exists == true 
+
+    - name: stop VM
+      vmware_guest: 
+        hostname: "{{ vcenter_ip }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ vcenter_dc }}"
+        cluster: "{{ vcenter_cluster }}"
+        folder: "{{ folder }}"
+        validate_certs: false
+        state: "poweredoff"
+        name: "{{ item.host }}"
+      loop: "{{ hostips.hostipmacs }}"
       
     - name: modify VM
       vmware_guest:
