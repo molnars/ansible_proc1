@@ -1,6 +1,6 @@
 ---
-hostipmacs:
-{% for item in csvfile.split("\n") %}
+vlanpgs:
+{% for item in csvpgfile.split("\n") %}
 {%   if loop.index != 1 %}
 {%     set list = item.split(",") %}
   - vlan_name: '{{ list[0]|trim() }}'
