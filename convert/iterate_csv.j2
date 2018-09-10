@@ -6,6 +6,7 @@ hostipmacs:
   - host: '{{ list[0]|trim() }}'
     inventory_name: '{{ list[1]|trim() }}'
     ip: '{{ list[2]|trim() }}'
-    mac: '{{ list[3]|trim() }}'
+    vlan: '{{ list[3]|trim() }}'
+    mac: '{{ list[4]|trim() }}'
 {%   endif %}
 {% endfor %}
