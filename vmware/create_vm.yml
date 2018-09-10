@@ -35,7 +35,7 @@
         - name: "{{ vm_network }}" 
           type: "static"
           ip: "{{ vm_ip }}"
-          vm_netmask: "{{ vm_netmask }}"
-          vm_gw: "{{ vm_gw }}"
+          netmask: "{{ vm_netmask }}"
+          gateway: "{{ vm_gw }}"
         wait_for_ip_address: no
  
