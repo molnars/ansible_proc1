@@ -1,8 +1,8 @@
 - name: deploy a VM form template
 - vsphere_guest:
-    vcenter_hostname: {{ }}
-    username: {{ vCenter_username }}
-    password: {{ vCenter_password }}
+    vCenter_hostname: "{{ vcenter_name }}"
+    username: {{ vcenter_username }}
+    password: "{{ vcenter_password }}"
     guest: {{ VM_hostname }}
     from_template: yes
     template_src: {{ from_template }}
