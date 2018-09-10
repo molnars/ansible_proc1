@@ -4,25 +4,25 @@
   gather_facts: false
   become: false
   tasks:
-    name: create VM
-    vmware_guest:
-    hostname: "{{ vcenter_ip }}"
-    username: "{{ vcenter_username }}"
-    password: "{{ vcenter_password }}"
-    validate_certs: False
-    cluster: "{{ vcenter_cluster }}"
-    folder: /cf
-    name: "{{ vm_name }}"
-    state: poweredon
-    template: "{{ vcenter_template }}"
-    disk:
-    - size_gb: 55
-      type: thin
-      datastore: "{{ vcenter_datastore }}"
-    hardware:
-      memory_mb: 512
-      num_cpus: 1
-    networks:
-    - name: "{{ vm_network }}" 
-    wait_for_ip_address: no
+    - name: create VM
+      vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      validate_certs: False
+      cluster: "{{ vcenter_cluster }}"
+      folder: /cf
+      name: "{{ vm_name }}"
+      state: poweredon
+      template: "{{ vcenter_template }}"
+      disk:
+      - size_gb: 55
+        type: thin
+        datastore: "{{ vcenter_datastore }}"
+      hardware:
+        memory_mb: 512
+        num_cpus: 1
+      networks:
+      - name: "{{ vm_network }}" 
+      wait_for_ip_address: no
   
