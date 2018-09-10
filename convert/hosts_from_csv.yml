@@ -18,6 +18,7 @@
         password: "{{ vcenter_password }}"
         validate_certs: False
         cluster: "{{ vcenter_cluster }}"
+        datacenter: "{{ vcenter_dc }}"
         folder: /testvms
         name: testvm_2
         state: poweredon
