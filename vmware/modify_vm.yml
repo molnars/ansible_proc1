@@ -15,8 +15,8 @@
       state: reconfigured
       name: "{{ vm_name }}"
       hardware:
-        memory_mb: {{ new_memory }}
-        num_cpus:  {{ new_cpu }}
+        memory_mb: "{{ new_memory }}"
+        num_cpus:  "{{ new_cpu }}"
       network:
-      - name: {{ new_vm_network }}
+      - name: "{{ new_vm_network }}"
     
