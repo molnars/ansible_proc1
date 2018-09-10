@@ -7,7 +7,8 @@
     vcenter_ip: vcsa.mcit.local
     vcenter_username: cfadmin@vsphere.local
     vcenter_password: Redhat@123
-    vcenter_cluster: MCIT_DC
+    vcenter_cluster: CF_POC
+    vcenter_dc: MCIT_DC
     folder: /cf
   tasks:
     - name: modify VM
