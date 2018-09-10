@@ -18,6 +18,7 @@
         password: "{{ vcenter_password }}"
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
+        folder: "{{ folder }}"
         validate_certs: false
         state: "poweredoff"
         name: "{{ vm_name }}"
