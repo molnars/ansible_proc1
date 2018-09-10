@@ -11,3 +11,5 @@
         src: "./iterate_csv.j2"
         dest: "./iterate_hosts.yml"
       run_once: true
+    - name: Parse CSV To YAML
+      csv_output= template("./iterate_csv.j2")
