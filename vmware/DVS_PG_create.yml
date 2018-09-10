@@ -1,7 +1,7 @@
 - name: create additional portgroups in named DVS
   local_action:
      module: vmware_dvs_portgroup
-     hostname: "{{ vcenter_name }}"
+     vCenter_hostname: "{{ vcenter_name }}"
      username: {{ vcenter_username }}
      password: "{{ vcenter_password }}"
      portgroup_name: "{{ PG_name }}"
