@@ -8,7 +8,9 @@
     vcenter_template: Linux_temp
     vm_name: testvm00
     vm_network: "VM Network"
-    vm_ip: "1.1.1.1"
+    vm_ip: "1.1.1.2"
+    vm_netmask: "255.255.255.0"
+    vm_gw: "1.1.1.1"
   tasks:
     - name: create VM
       vmware_guest:
@@ -33,5 +35,7 @@
         - name: "{{ vm_network }}" 
           type: "static"
           ip: "{{ vm_ip }}"
+          vm_netmask: "{{ vm_netmask }}"
+          vm_gw: "{{ vm_gw }}"
         wait_for_ip_address: no
  
