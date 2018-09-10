@@ -11,3 +11,8 @@
         src: "./iterate_csv.j2"
         dest: "../iterate_hosts.yml"
       run_once: true
+    - name: parse csv for PG
+      template:
+        src: "./iterate_pg.j2"
+        dest: "../iterate_vlan.yml"
+      run_once: true
