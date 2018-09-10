@@ -14,12 +14,12 @@
   tasks:
     - name: check file
       stat: 
-        path: iterate_hosts.yml
+        path: ../convert/iterate_hosts.yml
       register: stat_result
 
     - name: load CSV To YAML
       include_vars:
-        file: iterate_hosts.yml
+        file: ../convert/iterate_hosts.yml
         name: hostips
       when: stat_result.stat.exists == true 
       
