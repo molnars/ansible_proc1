@@ -17,6 +17,7 @@
         validate_certs: false
         state: "poweredoff"
         name: "{{ vm_name }}"
+      register: _vm_stopped
       
     - name: modify VM
       vmware_guest:
@@ -34,4 +35,5 @@
           num_cpus:  "{{ vm_cpu }}"
         networks:
         - name: "{{ vm_net }}"
+      register: _vm_modified
     
