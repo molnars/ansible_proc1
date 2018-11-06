@@ -4,11 +4,6 @@
   gather_facts: no
   become: false
   vars:
-    vcenter_ip: vcsa.mcit.local
-    vcenter_username: cfadmin@vsphere.local
-    vcenter_password: Redhat@123
-    vcenter_cluster: CF_POC
-    vcenter_dc: MCIT_DC
     folder: /cf
   tasks:
     - name: stop VM
