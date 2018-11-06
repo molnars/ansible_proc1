@@ -3,8 +3,6 @@
   connection: local
   gather_facts: false
   become: false
-  vars_files:
-    - ../vars/vcenter_env.yml
   vars:
     vcenter_template: rhel_76
     vm_name: testvm00
