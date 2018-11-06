@@ -13,7 +13,6 @@
         password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
-        datastore: "{{ vcenter_datastore }}"
         folder: "{{ folder }}"
         validate_certs: false
         state: "poweredoff"
@@ -25,7 +24,6 @@
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
-        datastore: "{{ vcenter_datastore }}"
         cluster: "{{ vcenter_cluster }}"
         folder: "{{ folder }}"
         validate_certs: false
