@@ -10,7 +10,7 @@
     vm_ip: "1.1.1.2"
     vm_netmask: "255.255.255.0"
     vm_gw: "1.1.1.1"
-    vm_init_disksize: 55
+    vm_init_disksize: 100
     vm_init_mem: 512
     vm_init_cpu: 1
   tasks:
