@@ -11,45 +11,32 @@
     vcenter_dc: MCIT_DC
     folder: /cf
   tasks:
-    - name: check file
-      stat: 
-        path: ../iterate_hosts.yml
-      register: stat_result
-
-    - name: load CSV To YAML
-      include_vars:
-        file: ../iterate_hosts.yml
-        name: hostips
-      when: stat_result.stat.exists == true 
-
     - name: stop VM
       vmware_guest: 
         hostname: "{{ vcenter_ip }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
         folder: "{{ folder }}"
         validate_certs: false
         state: "poweredoff"
-        name: "{{ item.host }}"
-      loop: "{{ hostips.hostipmacs }}"
+        name: "{{ vm_name }}"
       
     - name: modify VM
       vmware_guest:
         hostname: "{{ vcenter_ip }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
         folder: "{{ folder }}"
         validate_certs: false
         state: "present"
-        name: "{{ item.host }}"
+        name: "{{ vm_name }}"
         hardware:
-          memory_mb: "{{ item.memory }}"
-          num_cpus:  "{{ item.cpu }}"
+          memory_mb: "{{ vm_mem }}"
+          num_cpus:  "{{ vm_cpu }}"
         networks:
-        - name: "{{ item.networkname }}"
-      loop: "{{ hostips.hostipmacs }}"
+        - name: "{{ vm_net }}"
     
