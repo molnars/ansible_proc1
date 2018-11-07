@@ -15,11 +15,11 @@
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         validate_certs: False
-        portgroup_name: "{{ item.vlan_name }}"
+        portgroup_name: "{{ vlan_name }}"
         switch_name: "{{ VSS_name }}"
-        vlan_id: "{{ item.vlan_id }}"
+        vlan_id: "{{ vlan_id }}"
         num_ports: 10
         portgroup_type: earlyBinding
         state: present
         network_policy:
-          promiscuous_mode: True
+          promiscuous_mode: False
