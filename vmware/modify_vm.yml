@@ -6,27 +6,27 @@
   vars:
     folder: /
   tasks:
-    - name: stop VM
+    - name: stop VM for resource modifications
       vmware_guest: 
         hostname: "{{ vcenter_ip }}"
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
-        folder: "{{ folder }}"
+        folder: "{{ vcenter_dc }}/{{ folder }}"
         validate_certs: false
         state: "poweredoff"
         name: "{{ vm_name }}"
-      register: _vm_stopped
+      register: found
       
-    - name: modify VM
+    - name: modify VM resources
       vmware_guest:
         hostname: "{{ vcenter_ip }}"
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
-        folder: "{{ folder }}"
+        folder: "{{ vcenter_dc }}/{{ folder }}"
         validate_certs: false
         state: "present"
         name: "{{ vm_name }}"
@@ -36,4 +36,3 @@
         networks:
         - name: "{{ vm_net }}"
       register: _vm_modified
-    
