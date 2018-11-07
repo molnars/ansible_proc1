@@ -22,7 +22,7 @@
         validate_certs: False
         cluster: "{{ vcenter_cluster }}"
         datacenter: "{{ vcenter_dc }}"
-        folder: /
+        folder: "/"
         name: "{{ vm_name }}"
         state: poweredon
         template: "{{ vcenter_template }}"
