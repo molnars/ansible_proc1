@@ -55,7 +55,7 @@
       register: _vm_created
       
     - debug:
-      msg: _vm_created
+      var: _vm_created
       
     - name: modify VM to specs
       vmware_guest: 
