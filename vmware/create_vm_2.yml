@@ -13,7 +13,7 @@
     vm_init_disksize: 100
     vm_init_mem: 512
     vm_init_cpu: 1
-    folder: "/poc"
+    folder: "QDC5/poc"
   tasks:
     - name: create VM
       vmware_guest:
