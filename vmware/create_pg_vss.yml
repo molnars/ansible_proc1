@@ -21,3 +21,5 @@
         num_ports: 10
         portgroup_type: earlyBinding
         state: present
+        network_policy:
+          promiscuous_mode: True
