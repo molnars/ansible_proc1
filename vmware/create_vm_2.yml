@@ -84,3 +84,20 @@
         networks:
         - name: "{{ vm_net }}"
       register: _vm_modified
+
+    - name: modify VM with Disk
+      vmware_guest:
+        hostname: "{{ vcenter_ip }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pw }}"
+        datacenter: "{{ vcenter_dc }}"
+        cluster: "{{ vcenter_cluster }}"
+        folder: "{{ vcenter_dc }}/{{ folder }}"
+        validate_certs: false
+        state: "present"
+        name: "{{ vm_name }}"
+        disk:
+        - size_gb: "{{ vm_add_disksize }}"
+          type: thin
+          datastore: "{{ vcenter_datastore }}"
+      register: vm_disk
