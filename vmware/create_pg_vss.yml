@@ -1,34 +1,23 @@
-- name: create PG in DVS
+- name: create PG in VSS
   hosts: localhost
   connection: local
   gather_facts: false
   become: false
   vars:
-    DVS_PG_name: 1009_VLAN_temp
-    DVS_PG_vlanid: 1009
+    VSS_PG_name: 1009_VLAN_temp
+    VSS_PG_vlanid: 1009
+    VSS_name: "vSwitch0"
   tasks:
-    - name: check file
-      stat: 
-        path: ../iterate_vlan.yml
-      register: stat_result
-
-    - name: load CSV To YAML
-      include_vars:
-        file: ../iterate_vlan.yml
-        name: vlan_pgs
-      when: stat_result.stat.exists == true 
-      
     - name: Create Management portgroup
       local_action:
-        module: vmware_dvs_portgroup
+        module: vmware_portgroup
         hostname: "{{ vcenter_ip }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         validate_certs: False
         portgroup_name: "{{ item.vlan_name }}"
-        switch_name: "vDS_NEW"
+        switch_name: "{{ VSS_name }}"
         vlan_id: "{{ item.vlan_id }}"
         num_ports: 10
         portgroup_type: earlyBinding
         state: present
-      loop: "{{ vlan_pgs.vlanpgs }}"
