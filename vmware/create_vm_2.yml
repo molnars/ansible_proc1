@@ -41,10 +41,6 @@
           netmask: "{{ vm_netmask }}"
           gateway: "{{ vm_gw }}"
         wait_for_ip_address: yes
-        register: _vm_created
-    - debug:
-      var: _vm_created
-      verbosity: 0
         
     - name: modify VM to specs
       vmware_guest: 
