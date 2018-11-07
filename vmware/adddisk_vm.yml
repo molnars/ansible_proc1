@@ -21,4 +21,4 @@
         type: thin
         datastore: "{{ vcenter_datastore }}"
     register: vm_disk
-    when: vm_add_disksize|length > 0
+    when: vm_add_disksize > 0
