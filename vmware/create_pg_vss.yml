@@ -4,8 +4,8 @@
   gather_facts: false
   become: false
   vars:
-    VSS_PG_name: 1009_VLAN_temp
-    VSS_PG_vlanid: 1009
+    vlan_name: 1009_VLAN_temp
+    vlan_id: 1009
     VSS_name: "vSwitch0"
   tasks:
     - name: Create Management portgroup
