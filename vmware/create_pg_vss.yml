@@ -12,7 +12,7 @@
       local_action:
         module: vmware_portgroup
         hostname: "{{ vcenter_ip }}"
-        username: "{{ vcenter_usere }}"
+        username: "{{ vcenter_user }}"
         password: "{{ vcenter_pw }}"
         validate_certs: False
         portgroup_name: "{{ vlan_name }}"
