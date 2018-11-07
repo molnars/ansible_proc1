@@ -17,6 +17,7 @@
       state: "present"
       name: "{{ vm_name }}"
       disk:
+      - type: thin
       - size_gb: "{{ vm_add_disksize }}"
         type: thin
         datastore: "{{ vcenter_datastore }}"
