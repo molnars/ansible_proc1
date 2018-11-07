@@ -41,6 +41,11 @@
           netmask: "{{ vm_netmask }}"
           gateway: "{{ vm_gw }}"
         wait_for_ip_address: yes
+        register: _vm_created
+    - debug:
+      var: _vm_created
+      verbosity: 0
+        
     - name: modify VM to specs
       vmware_guest: 
         hostname: "{{ vcenter_ip }}"
@@ -53,6 +58,10 @@
         state: "poweredoff"
         name: "{{ vm_name }}"
       register: _vm_stopped
+      
+    - debug:
+      var: _vm_stopped
+      verbosity: 0
       
     - name: modify VM
       vmware_guest:
@@ -71,3 +80,7 @@
         networks:
         - name: "{{ vm_net }}"
       register: _vm_modified
+
+    - debug:
+      var: _vm_modified
+      verbosity: 0
