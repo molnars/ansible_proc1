@@ -41,15 +41,15 @@
           netmask: "{{ vm_netmask }}"
           gateway: "{{ vm_gw }}"
         wait_for_ip_address: yes
-        
+      delegate_to: localhost
+      register: deploy
+      
     - name: check VM created    
       vmware_guest_find:
         hostname: "{{ vcenter_ip }}"
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
-        cluster: "{{ vcenter_cluster }}"
-        folder: "{{ folder }}"
         validate_certs: false
         name: "{{ vm_name }}"
       register: _vm_created
