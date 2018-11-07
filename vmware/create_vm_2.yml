@@ -54,8 +54,7 @@
         name: "{{ vm_name }}"
       register: _vm_created
       
-    - debug:
-      var: _vm_created
+    - debug: var= _vm_created
       
     - name: modify VM to specs
       vmware_guest: 
@@ -64,15 +63,13 @@
         password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
-        folder: "{{ folder }}"
+        folder: "{{ vcenter_dc }}/{{ folder }}"
         validate_certs: false
         state: "poweredoff"
         name: "{{ vm_name }}"
-      register: _vm_stopped
+      register: found
       
-    - debug:
-      var: _vm_stopped
-      verbosity: 0
+    - debug: var= found
       
     - name: modify VM
       vmware_guest:
@@ -81,7 +78,7 @@
         password: "{{ vcenter_pw }}"
         datacenter: "{{ vcenter_dc }}"
         cluster: "{{ vcenter_cluster }}"
-        folder: "{{ folder }}"
+        folder: "{{ vcenter_dc }}/{{ folder }}"
         validate_certs: false
         state: "present"
         name: "{{ vm_name }}"
@@ -92,6 +89,4 @@
         - name: "{{ vm_net }}"
       register: _vm_modified
 
-    - debug:
-      var: _vm_modified
-      verbosity: 0
+    - debug: var= _vm_modified
