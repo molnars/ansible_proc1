@@ -18,8 +18,5 @@
         portgroup_name: "{{ vlan_name }}"
         switch_name: "{{ VSS_name }}"
         vlan_id: "{{ vlan_id }}"
-        num_ports: 10
-        portgroup_type: earlyBinding
-        state: present
         network_policy:
           promiscuous_mode: False
