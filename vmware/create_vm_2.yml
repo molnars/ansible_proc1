@@ -13,6 +13,7 @@
     vm_init_disksize: 100
     vm_init_mem: 512
     vm_init_cpu: 1
+    folder: "/"
   tasks:
     - name: create VM
       vmware_guest:
@@ -22,7 +23,7 @@
         validate_certs: False
         cluster: "{{ vcenter_cluster }}"
         datacenter: "{{ vcenter_dc }}"
-        folder: "/"
+        folder: "{{ folder }}"
         name: "{{ vm_name }}"
         state: poweredon
         template: "{{ vcenter_template }}"
