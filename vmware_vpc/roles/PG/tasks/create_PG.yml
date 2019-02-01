@@ -3,7 +3,7 @@
   local_action:
      module: vmware_dvs_portgroup
      vCenter_hostname: "{{ vcenter_name }}"
-     username: {{ vcenter_username }}
+     username: "{{ vcenter_username }}"
      password: "{{ vcenter_password }}"
      portgroup_name: "{{ PG_name }}"
      switch_name: "{{ DVS_name }}"
