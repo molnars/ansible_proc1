@@ -1,5 +1,5 @@
 ---
-- name:
+- name: PG actions
     hosts: localhost
     connection: local
     gather_facts: false
