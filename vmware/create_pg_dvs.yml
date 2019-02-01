@@ -1,4 +1,4 @@
-- name: create PG in VSS
+- name: create PG in DVS
   hosts: localhost
   connection: local
   gather_facts: false
@@ -6,7 +6,7 @@
   vars:
     vlan_name: 1009_VLAN_temp
     vlan_id: 1009
-    VSS_name: "vSwitch0"
+    DVS_name: "labDVS"
   tasks:
     - name: create additional portgroups in named DVS
       local_action:
