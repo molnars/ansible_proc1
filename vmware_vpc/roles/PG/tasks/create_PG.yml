@@ -1,19 +1,17 @@
 ---
-- name: PG actions
+- name: create new portGourp on a given DVS
     hosts: localhost
     connection: local
     gather_facts: false
     become: false
-  tasks:
-  - name: create new portGourp on a given DVS
     local_action:
-       module: vmware_dvs_portgroup
-       vCenter_hostname: "{{ VMWARE_HOST }}"
-       username: "{{ VMWARE_USER }}"
-       password: "{{ VMWARE_PASSWORD }}"
-       portgroup_name: "{{ PG_name }}"
-       switch_name: "{{ DVS_name }}"
-       vlan_id: "{{ PG_vlan}}"
-       num_ports: "{{ PG_portcount }}"
-       portgroup_type: earlyBinding
-       state: present
+      module: vmware_dvs_portgroup
+      vCenter_hostname: "{{ VMWARE_HOST }}"
+      username: "{{ VMWARE_USER }}"
+      password: "{{ VMWARE_PASSWORD }}"
+      portgroup_name: "{{ PG_name }}"
+      switch_name: "{{ DVS_name }}"
+      vlan_id: "{{ PG_vlan}}"
+      num_ports: "{{ PG_portcount }}"
+      portgroup_type: earlyBinding
+      state: present
