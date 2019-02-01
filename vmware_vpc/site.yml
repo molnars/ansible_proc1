@@ -1,7 +1,10 @@
 ---
 - name: check DVS presence
   hosts: vCenter
-  roles: 
+  connection: local
+  gather_facts: false
+  become: false
+  roles:
     - pre-check
 
 - name: create apppool
@@ -11,5 +14,8 @@
 
 - name: create PG
   hosts: vCenter
+  connection: local
+  gather_facts: false
+  become: false
   roles:
     - PG

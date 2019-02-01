@@ -1,8 +1,5 @@
 ---
 - name: create new portGourp on a given DVS
-  connection: local
-  gather_facts: false
-  become: false
   local_action:
     module: vmware_dvs_portgroup
     vCenter_hostname: "{{ VMWARE_HOST }}"
