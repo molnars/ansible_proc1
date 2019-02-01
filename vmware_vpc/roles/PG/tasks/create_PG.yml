@@ -7,7 +7,7 @@
      password: "{{ vcenter_password }}"
      portgroup_name: "{{ PG_name }}"
      switch_name: "{{ DVS_name }}"
-     vlan_id: {{ PG_vlan}}
-     num_ports: {{ PG_portcount }}
+     vlan_id: "{{ PG_vlan}}"
+     num_ports: "{{ PG_portcount }}"
      portgroup_type: earlyBinding
      state: present
