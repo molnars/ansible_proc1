@@ -17,7 +17,7 @@
       state: "present"
       name: "{{ vm_name }}"
       disk:
-      - size_gb: 100
+      - size_gb: 120
         type: thin
       - size_gb: "{{ vm_add_disksize }}"
         type: thin
