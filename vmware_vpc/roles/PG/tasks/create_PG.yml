@@ -1,0 +1,13 @@
+---
+- name: create new portGourp on a given DVS
+  local_action:
+     module: vmware_dvs_portgroup
+     vCenter_hostname: "{{ vcenter_name }}"
+     username: {{ vcenter_username }}
+     password: "{{ vcenter_password }}"
+     portgroup_name: "{{ PG_name }}"
+     switch_name: "{{ DVS_name }}"
+     vlan_id: {{ PG_vlan}}
+     num_ports: {{ PG_portcount }}
+     portgroup_type: earlyBinding
+     state: present
