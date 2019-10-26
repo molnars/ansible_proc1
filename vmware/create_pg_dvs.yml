@@ -3,10 +3,6 @@
   connection: local
   gather_facts: false
   become: false
-  vars:
-    vlan_name: "1009_VLAN_temp"
-    vlan_id: 1009
-    DVS_name: "labDVS"
   tasks:
     - name: debug inputs
       debug: msg="vlanname:{{PG_name}} tenant:{{CF_tenant_Id}}"
